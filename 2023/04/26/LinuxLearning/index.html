@@ -1,0 +1,333 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>LinuxLearning | 个人Blog</title><meta name="author" content="Jiajie"><meta name="copyright" content="Jiajie"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Linux 学习查看ip 地址 1ip addr 编辑 1vi  目录介绍1   bin存放二进制可执行文件2   boot存放系统引导时候用的各种文件3   dev存放设备文件4   etc存放系统配置文件5   home存放系统用户的文件6   lib存放程序运行所需要的共享库和内核模块7   opt额外安装的可选应用程序包所放置的位置8   root超级用户目录9   sbin存放二进制可执">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LinuxLearning">
+<meta property="og:url" content="http://example.com/2023/04/26/LinuxLearning/index.html">
+<meta property="og:site_name" content="个人Blog">
+<meta property="og:description" content="Linux 学习查看ip 地址 1ip addr 编辑 1vi  目录介绍1   bin存放二进制可执行文件2   boot存放系统引导时候用的各种文件3   dev存放设备文件4   etc存放系统配置文件5   home存放系统用户的文件6   lib存放程序运行所需要的共享库和内核模块7   opt额外安装的可选应用程序包所放置的位置8   root超级用户目录9   sbin存放二进制可执">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg.png">
+<meta property="article:published_time" content="2023-04-26T23:52:06.000Z">
+<meta property="article:modified_time" content="2023-04-27T06:00:47.043Z">
+<meta property="article:author" content="Jiajie">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2023/04/26/LinuxLearning/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'LinuxLearning',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-04-27 02:00:47'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = 'hidden';
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+
+preloader.initLoading()
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (false) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg.png')"><nav id="nav"><span id="blog-info"><a href="/" title="个人Blog"><span class="site-name">个人Blog</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">LinuxLearning</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2023-04-26T23:52:06.000Z" title="Created 2023-04-26 19:52:06">2023-04-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2023-04-27T06:00:47.043Z" title="Updated 2023-04-27 02:00:47">2023-04-27</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="LinuxLearning"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Linux-学习"><a href="#Linux-学习" class="headerlink" title="Linux 学习"></a>Linux 学习</h1><p>查看ip 地址</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip addr</span><br></pre></td></tr></table></figure>
+<p>编辑</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi</span><br></pre></td></tr></table></figure>
+
+<h2 id="目录介绍"><a href="#目录介绍" class="headerlink" title="目录介绍"></a>目录介绍</h2><p>1   bin存放二进制可执行文件<br>2   boot存放系统引导时候用的各种文件<br>3   dev存放设备文件<br>4   etc存放系统配置文件<br>5   home存放系统用户的文件<br>6   lib存放程序运行所需要的共享库和内核模块<br>7   opt额外安装的可选应用程序包所放置的位置<br>8   root超级用户目录<br>9   sbin存放二进制可执行文件，只有root用户才能访问<br>10  tmp存放临时文件<br>11  usr存放系统应用程序<br>12  var存放运行是需要改变数据的文件例如日志文件</p>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><table>
+<thead>
+<tr>
+<th align="center">命令</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">ls</td>
+<td align="center">查看当前目录下文件</td>
+</tr>
+<tr>
+<td align="center">pwd</td>
+<td align="center">查看当前所在目录</td>
+</tr>
+<tr>
+<td align="center">cd[目录名]</td>
+<td align="center">切换目录</td>
+</tr>
+<tr>
+<td align="center">touch[文件名]</td>
+<td align="center">如果文件不存在就创建</td>
+</tr>
+<tr>
+<td align="center">mkdir[目录名]</td>
+<td align="center">创建目录</td>
+</tr>
+<tr>
+<td align="center">rm[文件名]</td>
+<td align="center">删除指定文件</td>
+</tr>
+</tbody></table>
+<h3 id="乱码问题"><a href="#乱码问题" class="headerlink" title="乱码问题"></a>乱码问题</h3><p>原因是编码问题导致</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo &#x27;LANG = &quot;en_US.UTF-8&quot;&#x27;&gt;&gt;/etc/profile</span><br><span class="line">source / etc/profile</span><br></pre></td></tr></table></figure>
+<p>source 为立即加载</p>
+<h3 id="命令技巧"><a href="#命令技巧" class="headerlink" title="命令技巧"></a>命令技巧</h3><ul>
+<li>Tab 自动补全</li>
+<li>两次tab给出提示</li>
+<li>使用上下箭头快速调出曾经使用过命令</li>
+<li>clear 或 Ctrl+l清屏</li>
+</ul>
+<h3 id="命令格式"><a href="#命令格式" class="headerlink" title="命令格式"></a>命令格式</h3><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>command</td>
+<td>命令名</td>
+</tr>
+<tr>
+<td>options</td>
+<td>选项</td>
+</tr>
+<tr>
+<td>parameter</td>
+<td>传送参数 可多个</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">command[-options][parameter]</span><br></pre></td></tr></table></figure>
+<h3 id="文件目录操作命令"><a href="#文件目录操作命令" class="headerlink" title="文件目录操作命令"></a>文件目录操作命令</h3><h4 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h4><ul>
+<li>-a 显示所有文件级目录(隐藏文件也可以)</li>
+<li>-l 除文件名称外，同时将文件形态 权限拥有者大小都列出详细信息 -为文件   d为目录</li>
+<li>ll 为-l简写方式</li>
+</ul>
+<h4 id="cd"><a href="#cd" class="headerlink" title="cd"></a>cd</h4><ul>
+<li>~用户home目录</li>
+<li>.所在目录</li>
+<li>..目录位置上级目录</li>
+</ul>
+<h4 id="cat"><a href="#cat" class="headerlink" title="cat"></a>cat</h4><p>显示文件内容</p>
+<ul>
+<li>-n由1开始对所有输出内容的行数编号<br>、</li>
+</ul>
+<h5 id="more"><a href="#more" class="headerlink" title="more"></a>more</h5><ul>
+<li>回车向下滚动一行</li>
+<li>空格 向下滚动一屏</li>
+<li>b返回上一屏</li>
+<li>q或者ctrl+c 退出more</li>
+</ul>
+<h4 id="tail"><a href="#tail" class="headerlink" title="tail"></a>tail</h4><ul>
+<li>-f动态读取文件末尾内容并且显示 通常用于日志文件输出 -f 可以为数字</li>
+</ul>
+<h4 id="mkdir"><a href="#mkdir" class="headerlink" title="mkdir"></a>mkdir</h4><ul>
+<li>-p 确保目录名存在，不存在就创建</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p  1/2/3</span><br></pre></td></tr></table></figure>
+<p>可以同时创建多个目录</p>
+<h5 id="rm删除"><a href="#rm删除" class="headerlink" title="rm删除"></a>rm删除</h5><ul>
+<li>-r 将目录及所有文件全部删除</li>
+<li>-f 无需确认直接删除</li>
+</ul>
+<h4 id="cp-拷贝移动"><a href="#cp-拷贝移动" class="headerlink" title="cp 拷贝移动"></a>cp 拷贝移动</h4><ul>
+<li>-r 如果复制的是目录需要使用此选项<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp[-r] source dest</span><br></pre></td></tr></table></figure>
+如果复制到当前目录 需要改名<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp *** ./ new name</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="mv-拷贝移动命令"><a href="#mv-拷贝移动命令" class="headerlink" title="mv 拷贝移动命令"></a>mv 拷贝移动命令</h4><ul>
+<li>mv hello.txt hi.txt   将hellow.txt 改名hi.txt</li>
+<li>mv hi.txt # &#x2F;   将文件hi.txt移动到 #目录</li>
+<li>mv hi.txt #hello.txt 将hi.txt 移动到#目录中并改名为hello.txt</li>
+<li>mv #&#x2F;## 如果##目录不存在将#目录改名##</li>
+<li>mv #&#x2F;## 如果##存在将#目录移动到##中<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv source dest</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="tar-打包压缩"><a href="#tar-打包压缩" class="headerlink" title="tar 打包压缩"></a>tar 打包压缩</h4><ul>
+<li>-z 代表gzip 既可以打包也可以压缩</li>
+<li>-c create</li>
+<li>-x 代表还原 extract</li>
+<li>-v verbose 显示命令执行过程</li>
+<li>-f 代表file英语指定包名</li>
+<li>-C 大写C可以指定目录<br>zxvf分别使用 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar[-zcxvf] fileName[files]</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="vi-x2F-vim-文本编辑命令"><a href="#vi-x2F-vim-文本编辑命令" class="headerlink" title="vi&#x2F;vim 文本编辑命令"></a>vi&#x2F;vim 文本编辑命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi fileName</span><br></pre></td></tr></table></figure>
+
+<p>vim是一个比vi更加强大的文本工具<br>可能需要安装</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install vim</span><br></pre></td></tr></table></figure>
+
+<h4 id="vim"><a href="#vim" class="headerlink" title="vim"></a>vim</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim fileName</span><br></pre></td></tr></table></figure>
+<ol>
+<li>命令模式</li>
+</ol>
+<ul>
+<li>命令模式可以查看内容移动光标   上下箭头  gg 快速移动开头  G快速移动末尾</li>
+<li>默认进入命令模式</li>
+<li>另外两种模式都需要进入命令模式</li>
+</ul>
+<ol start="2">
+<li>插入模式</li>
+</ol>
+<ul>
+<li>插入模式可以进行文件内容编辑</li>
+<li>命令模式下 按 [i  a   o] 任意一个 可以进入</li>
+<li>Esc可以退出插入</li>
+</ul>
+<ol start="3">
+<li>底行模式</li>
+</ol>
+<ul>
+<li>可以对文件进行内容查找 显示行号 退出</li>
+<li>命令模式按[ : &#x2F;]</li>
+<li>&#x2F;进入底行模式1 可以进行查找</li>
+<li>：进入可以输入wq保存并退出  q！bu’bao’cun退出  set nu显示行号</li>
+</ul>
+<h4 id="查找命令find"><a href="#查找命令find" class="headerlink" title="查找命令find"></a>查找命令find</h4><p>在指定目录下查找文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find dirName- option fileName</span><br></pre></td></tr></table></figure>
+<h4 id="查找命令grep"><a href="#查找命令grep" class="headerlink" title="查找命令grep"></a>查找命令grep</h4><p>从指定文件中查找指定文本内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep word fileName</span><br></pre></td></tr></table></figure></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="http://example.com">Jiajie</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://example.com/2023/04/26/LinuxLearning/">http://example.com/2023/04/26/LinuxLearning/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/04/24/gitlearn/" title="gitlearn"><img class="cover" src="https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">gitlearn</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Jiajie</div><div class="author-info__description">这是一个我自己个人的博客 作为自己的树洞 留下足迹 写一些东西</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/YJJCA" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux-%E5%AD%A6%E4%B9%A0"><span class="toc-number">1.</span> <span class="toc-text">Linux 学习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.1.</span> <span class="toc-text">目录介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">1.2.</span> <span class="toc-text">常用命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98"><span class="toc-number">1.2.1.</span> <span class="toc-text">乱码问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E6%8A%80%E5%B7%A7"><span class="toc-number">1.2.2.</span> <span class="toc-text">命令技巧</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.2.3.</span> <span class="toc-text">命令格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4"><span class="toc-number">1.2.4.</span> <span class="toc-text">文件目录操作命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ls"><span class="toc-number">1.2.4.1.</span> <span class="toc-text">ls</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#cd"><span class="toc-number">1.2.4.2.</span> <span class="toc-text">cd</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#cat"><span class="toc-number">1.2.4.3.</span> <span class="toc-text">cat</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#more"><span class="toc-number">1.2.4.3.1.</span> <span class="toc-text">more</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#tail"><span class="toc-number">1.2.4.4.</span> <span class="toc-text">tail</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mkdir"><span class="toc-number">1.2.4.5.</span> <span class="toc-text">mkdir</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#rm%E5%88%A0%E9%99%A4"><span class="toc-number">1.2.4.5.1.</span> <span class="toc-text">rm删除</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#cp-%E6%8B%B7%E8%B4%9D%E7%A7%BB%E5%8A%A8"><span class="toc-number">1.2.4.6.</span> <span class="toc-text">cp 拷贝移动</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mv-%E6%8B%B7%E8%B4%9D%E7%A7%BB%E5%8A%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">1.2.4.7.</span> <span class="toc-text">mv 拷贝移动命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#tar-%E6%89%93%E5%8C%85%E5%8E%8B%E7%BC%A9"><span class="toc-number">1.2.4.8.</span> <span class="toc-text">tar 打包压缩</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#vi-x2F-vim-%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%91%BD%E4%BB%A4"><span class="toc-number">1.2.4.9.</span> <span class="toc-text">vi&#x2F;vim 文本编辑命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#vim"><span class="toc-number">1.2.4.10.</span> <span class="toc-text">vim</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E5%91%BD%E4%BB%A4find"><span class="toc-number">1.2.4.11.</span> <span class="toc-text">查找命令find</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E5%91%BD%E4%BB%A4grep"><span class="toc-number">1.2.4.12.</span> <span class="toc-text">查找命令grep</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/04/26/LinuxLearning/" title="LinuxLearning"><img src="https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="LinuxLearning"/></a><div class="content"><a class="title" href="/2023/04/26/LinuxLearning/" title="LinuxLearning">LinuxLearning</a><time datetime="2023-04-26T23:52:06.000Z" title="Created 2023-04-26 19:52:06">2023-04-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/04/24/gitlearn/" title="gitlearn"><img src="https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="gitlearn"/></a><div class="content"><a class="title" href="/2023/04/24/gitlearn/" title="gitlearn">gitlearn</a><time datetime="2023-04-25T02:29:40.000Z" title="Created 2023-04-24 22:29:40">2023-04-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/04/24/firstblogmd/" title="firstblogmd"><img src="https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="firstblogmd"/></a><div class="content"><a class="title" href="/2023/04/24/firstblogmd/" title="firstblogmd">firstblogmd</a><time datetime="2023-04-24T20:39:50.000Z" title="Created 2023-04-24 16:39:50">2023-04-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/31/hello-world/" title="Hello World"><img src="https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/2023/03/31/hello-world/" title="Hello World">Hello World</a><time datetime="2023-04-01T02:25:51.754Z" title="Created 2023-03-31 22:25:51">2023-03-31</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Jiajie</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><div class="aplayer no-destroy" data-id="8300182685" data-server="netease" data-type="playlist" data-order="list" data-fixed="true" data-preload="auto" data-autoplay="false" data-mutex="true" ></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="false" data-text="Yes" data-fontsize="15px" data-random="false" async="async"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/"});</script></body></html>
